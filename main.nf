@@ -281,6 +281,7 @@ process fastqc {
 process demux{
 
     tag "primer removal: $name"
+    label 'process_high'
 
     publishDir "$params.outdir/$name/lima", mode: 'copy'
 
@@ -308,6 +309,7 @@ process run_refine{
 
     tag "refining : $name"
     publishDir "$params.outdir/$name/refine", mode: 'copy'
+    label 'process_high'
 
     input:
     set name, file(bam) from trimmed_out.dump(tag: 'trimmed')
@@ -356,6 +358,7 @@ process run_refine{
 process align_reads{
 
     tag "mapping : $name"
+    label 'process_high'
 
     // not clear if all files produced by the code or just the files specifid
     // in output are copied
@@ -395,6 +398,7 @@ process align_reads{
 process collapse_isoforms{
 
     publishDir "$params.outdir/$name/collapse_isoforms", mode: 'copy'
+    label 'process_high'
 
 
     input:
@@ -430,6 +434,7 @@ process collapse_isoforms{
 process correct_annotate{
      
     publishDir "$params.outdir/$name/sqanti_qc", mode: 'copy'
+    label 'process_high'
 
     input:
         set name, file(aligned_sam) from collapse_out
@@ -463,6 +468,7 @@ process correct_annotate{
 process filter{
 
     publishDir "$params.outdir/$name/sqanti_filter", mode: 'copy'
+    label 'process_high'
     
     input:
 
@@ -477,9 +483,7 @@ process filter{
     """
     python sqanti_filter2.py \
      ${name}.sqanti_classification.txt \
-     $fasta \
-     $sam \
-     $gtf
+     $fasta $sam $gtf
 
      mv *.fasta ${name}.sqanti_filtered.fasta
     """
