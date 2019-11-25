@@ -7,7 +7,17 @@ channels:
   - defaults
 dependencies:
   # TODO nf-core: Add required software dependencies here
-  - bioconda::fastqc=0.11.8
   - bioconda::multiqc=1.7
   - conda-forge::r-markdown=1.1
   - conda-forge::r-base=3.6.1
+  - python=2.7
+  - conda-forge::biopython=1.74 # biopython docs suggest using conda-forge 
+  - isoseq3=3.2
+  - minimap2=2.17
+  - samtools=1.9
+  - bamtools=2.5
+  - pbcoretools=0.2.4 # needed for merging SMRT cells
+  - lima=1.10
+  # - pbccs # only needed to do ccs calling
+  - pip:
+    - git+https://github.com/Magdoll/cDNA_Cupcake.git@Py2_v8.7.x
