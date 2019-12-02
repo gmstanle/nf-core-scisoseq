@@ -51,7 +51,6 @@ def helpMessage() {
 
     Options:
       --genome                      Name of iGenomes reference
-      --singleEnd                   Specifies that the input is single end reads
 
     References                      If not specified in the configuration file or you wish to overwrite any of the references.
       --fasta                       Path to Fasta reference
@@ -95,9 +94,8 @@ if (params.genomes && params.genome && !params.genomes.containsKey(params.genome
 params.ref_fasta = params.genome ? params.genomes[ params.genome ].fasta ?: false : false
 params.ref_gtf = params.genome ? params.genomes[ params.genome ].gtf ?: false : false
 params.intron_max = params.genome ? params.genomes[ params.genome ].intron_max ?: false : false
-params.primers = params.primer_type ? params.primers_stets[ params.primer_type ].primer_file ?: false : false
 
-if (params.fasta) { ch_fasta = file(params.fasta, checkIfExists: true) }
+//if (params.ref_fasta) { ch_fasta = file(params.ref_fasta, checkIfExists: true) }
 
 // Has the run name been specified by the user?
 //  this has the bonus effect of catching both -name and --name
@@ -144,24 +142,28 @@ if (params.input) {
 }
 
  */
-Channel:
-    .fromFilePairs(params.input + '*.ccs.{bam,bam.pbi}') { file -> file.name.replaceAll(/.ccs.bam$|.ccs.bam.pbi$/,'') }
-    .ifEmpty { error "Cannot find matching bam and pbi files: $params.input. Make sure your bam files are pb indexed." }
-    .set(ccs_out_indexed)
+//Channel
+//    .fromFilePairs(params.input + '*.ccs.{bam,bam.pbi}') { file -> file.name.replaceAll(/.ccs.bam$|.ccs.bam.pbi$/,'') }
+//    .ifEmpty { error "Cannot find matching bam and pbi files: $params.input. Make sure your bam files are pb indexed." }
+//    .set {ccs_out_indexed}
 Channel
-    .fromPath(params.input + '*.bam')
-    .ifEmpty { error "Cannot find matching bam files: $params.input." }
-    .tap { bam_files }
-
-    // make a matching filename 'base' for every file
+    .fromPath(params.input) //{ file -> file.name.replaceAll(/.ccs.bam$/,'') }
+    .ifEmpty { error "Cannot find bam files: $params.input." }
     .map{ file -> tuple(file.name.replaceAll(/.bam$/,''), file) } 
-    .tap { bam_names }
-
+    .set {ccs_out}
+//Channel
+//    .fromPath(params.input)
+//    .ifEmpty { error "Cannot find matching bam files: $params.input." }
+//    .tap { bam_files }
+//
+//    // make a matching filename 'base' for every file
+//    .map{ file -> tuple(file.name.replaceAll(/.bam$/,''), file) } 
+//    .tap { bam_names }
+//
 Channel
     .fromPath(params.primers)
     .ifEmpty { error "Cannot find primer file: $params.primers" }
     .into { primers_remove; primers_refine } // puts the primer files into these two channels
-
 
 Channel
     .fromPath(params.ref_fasta)
@@ -171,8 +173,7 @@ Channel
 Channel
     .fromPath(params.ref_gtf)
     .ifEmpty { error "Cannot find reference file: $params.ref_gtf"}
-    .into {ref_gtf_annotate}
-
+    .set {ref_gtf_annotate}
 
 
 // Header log info
@@ -182,8 +183,7 @@ if (workflow.revision) summary['Pipeline Release'] = workflow.revision
 summary['Run Name']         = custom_runName ?: workflow.runName
 // TODO nf-core: Report custom parameters here
 summary['Reads']            = params.input
-summary['Fasta Ref']        = params.fasta
-summary['Data Type']        = params.singleEnd ? 'Single-End' : 'Paired-End'
+summary['Fasta Ref']        = params.ref_fasta
 summary['Max Resources']    = "$params.max_memory memory, $params.max_cpus cpus, $params.max_time time per job"
 if (workflow.containerEngine) summary['Container'] = "$workflow.containerEngine - $workflow.container"
 summary['Output dir']       = params.outdir
@@ -246,8 +246,12 @@ process get_software_versions {
     """
     echo $workflow.manifest.version > v_pipeline.txt
     echo $workflow.nextflow.version > v_nextflow.txt
-    fastqc --version > v_fastqc.txt
     multiqc --version > v_multiqc.txt
+    lima --version > v_lima.txt
+    isoseq3 --version > v_isoseq3.txt
+    minimap2 --version > v_minimap2.txt
+    bamtools --version > v_bamtools.txt
+
     scrape_software_versions.py &> software_versions_mqc.yaml
     """
 }
@@ -288,7 +292,8 @@ process demux{
     input:
     // weird usage of dump - it is normally for debugging.
 //    set name, file(bam) from ccs_out.dump(tag: 'ccs_name')
-    set name, file(bam) from ccs_out_indexed
+    //set name, file(bam) from ccs_out_indexed
+    set name, file(bam) from ccs_out
     path primers from primers_remove.collect()
     
     output:
@@ -403,19 +408,20 @@ process collapse_isoforms{
 
     input:
         set name, file(aligned_sam) from align_out
-        path polished_fasta from polished_for_collapse
+        //path polished_fasta from polished_for_collapse
+        path refined_fasta from refine_for_collapse 
 
     output:
         path "*{gff,fq,txt}"
         set name, file("${name}.collapsed.rep.fq") into collapse_for_annotate
         set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
-        path "${name}.collapsed.group.txt" into collapse_for_filter
+        //path "${name}.collapsed.group.txt" into collapse_txt_for_filter
 
 
     // output is out.collapsed.gff, out.collapsed.rep.fq, out.collapsed.group.txt
     """
     sort -k 3,3 -k 4,4n $aligned_sam > sorted.sam
-    collapse_isoforms_by_sam.py --input polished_fasta \
+    collapse_isoforms_by_sam.py --input refined_fasta \
       -s sorted.sam -c 0.99 -i 0.95 -o ${name}
 
     """
@@ -437,8 +443,8 @@ process correct_annotate{
     label 'process_high'
 
     input:
-        set name, file(aligned_sam) from collapse_out
-        path gtf_ref from ref_gtf
+        set name, file(aligned_sam) from  collapse_for_annotate
+        path gtf_ref from ref_gtf_annotate
         path fasta_ref from ref_fasta_annotate
 
 
