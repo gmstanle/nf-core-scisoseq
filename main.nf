@@ -324,8 +324,8 @@ process run_refine{
     // flnc = full-length non-concatemer
     output:
     path "*"
-    set val(name), file("${name}.flnc.fasta") into refine_out
-    path "${name}.flnc.fasta" into refine_for_collapse
+    set val(name), file("${name}.flnc.fasta") into refine_out, refine_for_collapse
+//    path "${name}.flnc.fasta" into refine_for_collapse
  
     //TODO update input & output channels
     """
@@ -409,19 +409,19 @@ process collapse_isoforms{
     input:
         set name, file(aligned_sam) from align_out
         //path polished_fasta from polished_for_collapse
-        path refined_fasta from refine_for_collapse 
+        set name, file(refined_fasta) from refine_for_collapse 
 
     output:
         path "*{gff,fq,txt}"
-        set name, file("${name}.collapsed.rep.fq") into collapse_for_annotate
-        set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
+        set name, file("${name}.collapsed.rep.fa") into collapse_for_annotate //, collapse_for_filter
+//        set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
         //path "${name}.collapsed.group.txt" into collapse_txt_for_filter
 
 
     // output is out.collapsed.gff, out.collapsed.rep.fq, out.collapsed.group.txt
     """
     sort -k 3,3 -k 4,4n $aligned_sam > sorted.sam
-    collapse_isoforms_by_sam.py --input refined_fasta \
+    collapse_isoforms_by_sam.py --input $refined_fasta \
       -s sorted.sam -c 0.99 -i 0.95 -o ${name}
 
     """
