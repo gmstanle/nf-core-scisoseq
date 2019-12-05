@@ -9,7 +9,7 @@ dependencies:
   # TODO nf-core: Add required software dependencies here
   - bioconda::multiqc=1.7
   - conda-forge::r-markdown=1.1
-  - conda-forge::r-base=3.6.1
+  - conda-forge::r-base
   - python=2.7
   - conda-forge::biopython=1.74 # biopython docs suggest using conda-forge 
   - isoseq3=3.2
@@ -27,4 +27,5 @@ dependencies:
   - bx-python=0.8
   - bcbiogff=0.6
   - gffread=0.11
-  # http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/gtfToGenePred - saved to bin/
+  - ucsc-gtftogenepred
+  - openssl=1.0
