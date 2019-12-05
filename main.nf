@@ -457,6 +457,7 @@ process correct_annotate{
         path "${name}.collapsed.rep.fa.sam" into sam_for_filter
 
     """
+    echo ${task.cpus}
     python $baseDir/bin/sqanti_qc2.py -t ${task.cpus} $aligned_sam \
     $gtf_ref $fasta_ref
     """ 
