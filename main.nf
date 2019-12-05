@@ -413,7 +413,9 @@ process collapse_isoforms{
 
     output:
         path "*{gff,fq,txt}"
-        set name, file("${name}.collapsed.rep.fa") into collapse_for_annotate //, collapse_for_filter
+        set name, file("${name}.collapsed.rep.fa") into collapse_for_annotate
+        path "${name}.collapsed.gff" into gff_for_filter
+         //, collapse_for_filter
 //        set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
         //path "${name}.collapsed.group.txt" into collapse_txt_for_filter
 
@@ -449,21 +451,14 @@ process correct_annotate{
 
 
     output:
-        path "*{fasta,gtf,sam,txt}"
-        set name, file("${name}.sqanti_classification.txt") into classification_for_filter
-        path "${name}.sqanti_corrected.fasta" into fasta_for_filter
-        path "${name}.sqanti_corrected.gtf" into gtf_for_filter
-        path "${name}.sqanti_corrected.sam" into sam_for_filter
+        path "*"
+        set name, file("${name}.collapsed.rep_classification.txt") into classification_for_filter
+        path "${name}.collapsed.rep.renamed.fasta" into fasta_for_filter
+        path "${name}.collapsed.rep.fa.sam" into sam_for_filter
 
     """
-    python sqanti_qc2.py -t 30 $aligned_sam \
+    python $baseDir/bin/sqanti_qc2.py -t ${task.cpus} $aligned_sam \
     $gtf_ref $fasta_ref
-
-    mv *.fasta ${name}.sqanti_corrected.fasta
-    mv *.gtf ${name}.sqanti_corrected.gtf
-    mv *.sam ${name}.sqanti_corrected.sam
-    mv *classication.txt ${name}.sqanti_classification.txt
-    mv *junctions.txt ${name}.sqanti_junctions.txt
     """ 
 }
 
@@ -480,18 +475,16 @@ process filter{
 
         set name, file("${name}.sqanti_classification.txt") from classification_for_filter
         path fasta from fasta_for_filter
-        path gtf   from gtf_for_filter
+        path gff from gff_for_filter
         path sam   from sam_for_filter
 
     output:
         path "*"
 
     """
-    python sqanti_filter2.py \
+    python $baseDir/bin/sqanti_filter2.py \
      ${name}.sqanti_classification.txt \
-     $fasta $sam $gtf
-
-     mv *.fasta ${name}.sqanti_filtered.fasta
+     $fasta $sam $gff
     """
 }
 
