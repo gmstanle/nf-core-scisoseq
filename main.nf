@@ -453,8 +453,9 @@ process correct_annotate{
     output:
         path "*"
         set name, file("${name}.collapsed.rep_classification.txt") into classification_for_filter
-        path "${name}.collapsed.rep.renamed.fasta" into fasta_for_filter
-        path "${name}.collapsed.rep.fa.sam" into sam_for_filter
+        path "${name}.collapsed.rep.renamed_corrected.fasta" into fasta_for_filter
+        path "${name}.collapsed.rep.renamed_corrected.sam" into sam_for_filter
+        path "${name}.collapsed.rep_junctions.txt" into junctions_for_filter 
 
     """
     echo ${task.cpus}
@@ -474,8 +475,9 @@ process filter{
     
     input:
 
-        set name, file("${name}.sqanti_classification.txt") from classification_for_filter
+        set name, file("${name}.collapsed.rep_classification.txt") from classification_for_filter
         path fasta from fasta_for_filter
+        path junctions from junctions_for_filter 
         path gff from gff_for_filter
         path sam   from sam_for_filter
 
@@ -484,7 +486,7 @@ process filter{
 
     """
     python $baseDir/bin/sqanti_filter2.py \
-     ${name}.sqanti_classification.txt \
+     ${name}.collapsed.rep_classification.txt \
      $fasta $sam $gff
     """
 }
