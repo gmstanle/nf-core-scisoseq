@@ -29,3 +29,9 @@ dependencies:
   - gffread=0.11
   - ucsc-gtftogenepred
   - openssl=1.0
+  - r-ggplot2
+  - r-scales
+  - r-reshape
+  - r-gridextra
+  - r-gridbase
+  - r-dplyr
