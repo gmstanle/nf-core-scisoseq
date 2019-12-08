@@ -442,7 +442,7 @@ process collapse_isoforms{
 process correct_annotate{
      
     publishDir "$params.outdir/$name/sqanti_qc", mode: 'copy'
-    label 'process_high'
+    label 'process_medium' // I don't think this script is very (or at all) parallelized - can't use multiple cores.
 
     input:
         set name, file(aligned_sam) from  collapse_for_annotate
@@ -471,7 +471,7 @@ process correct_annotate{
 process filter{
 
     publishDir "$params.outdir/$name/sqanti_filter", mode: 'copy'
-    label 'process_high'
+    label 'process_medium' // I don't think this script is very (or at all) parallelized - not sure it makes use of many cores.
     
     input:
 
