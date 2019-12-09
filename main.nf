@@ -231,6 +231,7 @@ ${summary.collect { k,v -> "            <dt>$k</dt><dd><samp>${v ?: '<span style
  * Parse software version numbers
  */
 process get_software_versions {
+    label 'process_low'
     publishDir "${params.outdir}/pipeline_info", mode: 'copy',
         saveAs: { filename ->
             if (filename.indexOf(".csv") > 0) filename
