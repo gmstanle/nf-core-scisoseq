@@ -1,0 +1,106 @@
+digraph "pipeline_dag" {
+p0 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
+p1 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p0 -> p1;
+
+p1 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p2 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+p1 -> p2;
+
+p2 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+p14 [label="demux"];
+p2 -> p14 [label="ccs_out"];
+
+p3 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
+p4 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p3 -> p4;
+
+p4 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p4 -> p5;
+
+p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p5 -> p13 [label="primers_remove"];
+
+p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p15 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p5 -> p15 [label="primers_refine"];
+
+p6 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
+p7 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p6 -> p7;
+
+p7 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p7 -> p8;
+
+p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p19 [label="correct_annotate"];
+p8 -> p19 [label="ref_fasta_annotate"];
+
+p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p17 [label="align_reads"];
+p8 -> p17 [label="ref_fasta_align"];
+
+p9 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
+p10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p9 -> p10;
+
+p10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+p19 [label="correct_annotate"];
+p10 -> p19 [label="ref_gtf_annotate"];
+
+p11 [label="get_software_versions"];
+p12 [shape=point];
+p11 -> p12 [label="software_versions_yaml"];
+
+p13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p14 [label="demux"];
+p13 -> p14;
+
+p14 [label="demux"];
+p16 [label="run_refine"];
+p14 -> p16 [label="trimmed_out"];
+
+p15 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p16 [label="run_refine"];
+p15 -> p16;
+
+p16 [label="run_refine"];
+p17 [label="align_reads"];
+p16 -> p17 [label="refine_out"];
+
+p16 [label="run_refine"];
+p18 [label="collapse_isoforms"];
+p16 -> p18 [label="refine_for_collapse"];
+
+p17 [label="align_reads"];
+p18 [label="collapse_isoforms"];
+p17 -> p18 [label="align_out"];
+
+p18 [label="collapse_isoforms"];
+p19 [label="correct_annotate"];
+p18 -> p19 [label="collapse_for_annotate"];
+
+p18 [label="collapse_isoforms"];
+p20 [label="filter"];
+p18 -> p20 [label="gff_for_filter"];
+
+p19 [label="correct_annotate"];
+p20 [label="filter"];
+p19 -> p20 [label="classification_for_filter"];
+
+p19 [label="correct_annotate"];
+p20 [label="filter"];
+p19 -> p20 [label="fasta_for_filter"];
+
+p19 [label="correct_annotate"];
+p20 [label="filter"];
+p19 -> p20 [label="sam_for_filter"];
+
+p19 [label="correct_annotate"];
+p20 [label="filter"];
+p19 -> p20 [label="junctions_for_filter"];
+
+}
