@@ -10,6 +10,8 @@
 
 ## Introduction
 
+This pipeline is intended to demultiplex and align PacBio CCS reads from single cells using the [IsoSeq3 pipeline](https://github.com/PacificBiosciences/IsoSeq) and the guidelines developed by Liz Tseng ([here](https://github.com/Magdoll/cDNA_Cupcake/wiki/Iso-Seq-Single-Cell-Analysis:-Recommended-Analysis-Guidelines)). This pipeline is modified to align cDNA that has dual barcodes, one on either end of the read, and no UMIs. It produces a .csv file in the `collate/` results folder that has the isoform id, ccs, and the identity of the top-matching barcode for either end.
+
 The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It comes with docker containers making installation trivial and results highly reproducible.
 
 ## Quick Start
@@ -28,7 +30,7 @@ iv. Start running your own analysis!
 
 <!-- TODO nf-core: Update the default command above used to run the pipeline -->
 ```bash
-nextflow run nf-core/scisoseq -profile <docker/singularity/conda> --input '*_R{1,2}.fastq.gz' --genome GRCh37
+nextflow run nf-core/scisoseq -profile <docker/singularity/conda> --input 'data/*.bam' --genome GRCm38
 ```
 
 See [usage docs](docs/usage.md) for all of the available options when running the pipeline.

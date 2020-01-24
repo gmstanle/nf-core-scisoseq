@@ -3,8 +3,7 @@ work/
 data/
 results/
 .DS_Store
-tests/test_data
 *.pyc
 report.*
-execution_*
 scratch/
+/execution_*
