@@ -7,3 +7,4 @@ tests/test_data
 *.pyc
 report.*
 execution_*
+scratch/

@@ -399,7 +399,6 @@ process align_reads{
 
 // How does this process know to take only from the channels with a matching $name?
 // For now it doesn't matter since I'm only dealing with one input file
-// TODO: finish labeling output
 // from https://github.com/Magdoll/cDNA_Cupcake/wiki/Cupcake:-supporting-scripts-for-Iso-Seq-after-clustering-step#collapse-redundant-isoforms-has-genome
 process collapse_isoforms{
 
