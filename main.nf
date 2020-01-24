@@ -497,7 +497,8 @@ process filter{
 process collate_results{
 
     publishDir "$params.outdir/$name/collate_results", mode: 'copy'
-    label 'process_low' 
+    memory '64 GB'
+    cpus 2
 
     input:
 

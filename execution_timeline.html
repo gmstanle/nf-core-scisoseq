@@ -78,17 +78,18 @@ function c0(index) { return "#9c9c9c"; }
 function c1(index) { return "#bdbdbd"; }
 function c2(index) { return colors[index % 16]; } // <-- note: uses only the first 16 colors
 
-var elapsed="19h 19m"
-var beginningMillis=1576021798644;
-var endingMillis=1576348969783;
+var elapsed="7m 25s"
+var beginningMillis=1579829563604;
+var endingMillis=1579907674908;
 var data=[
-{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1576021798644, "ending_time": 1576023645368, "color":c1(0)}, {"starting_time": 1576023645368, "ending_time": 1576041259325, "color":c0(0), "label": "5h 24m 21s \/ 63.9 MB \/ CACHED"}, {"starting_time": 1576041259325, "ending_time": 1576041259767, "color":c1(0)}]},
-{"label": "run_refine (refining : pacbio_exp1.ccs)", "times": [{"starting_time": 1576041260133, "ending_time": 1576103984399, "color":c1(1)}, {"starting_time": 1576103984399, "ending_time": 1576104507439, "color":c0(1), "label": "17h 34m 13s \/ 48.3 MB \/ CACHED"}, {"starting_time": 1576104507439, "ending_time": 1576104513380, "color":c1(1)}]},
-{"label": "align_reads (mapping : pacbio_exp1.ccs)", "times": [{"starting_time": 1576104513616, "ending_time": 1576149215605, "color":c1(2)}, {"starting_time": 1576149215605, "ending_time": 1576150864504, "color":c0(2), "label": "12h 52m 30s \/ 22.5 GB \/ CACHED"}]},
-{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1576150863964, "ending_time": 1576173322516, "color":c1(3)}, {"starting_time": 1576173322516, "ending_time": 1576175559815, "color":c0(3), "label": "6h 51m 44s \/ 12.9 GB \/ CACHED"}, {"starting_time": 1576175559815, "ending_time": 1576175568036, "color":c1(3)}]},
-{"label": "get_software_versions", "times": [{"starting_time": 1576279433609, "ending_time": 1576279970891, "color":c1(4)}, {"starting_time": 1576279970891, "ending_time": 1576279989937, "color":c2(4), "label": "9m 17s \/ 67.7 MB"}, {"starting_time": 1576279989937, "ending_time": 1576279990887, "color":c1(4)}]},
-{"label": "correct_annotate (1)", "times": [{"starting_time": 1576279433747, "ending_time": 1576345612089, "color":c1(5)}, {"starting_time": 1576345612089, "ending_time": 1576346878150, "color":c2(5), "label": "18h 44m 3s \/ 23 GB"}]},
-{"label": "filter (1)", "times": [{"starting_time": 1576346878754, "ending_time": 1576347247144, "color":c1(6)}, {"starting_time": 1576347247144, "ending_time": 1576348966751, "color":c2(6), "label": "34m 49s \/ 1.2 GB"}, {"starting_time": 1576348966751, "ending_time": 1576348967359, "color":c1(6)}]}
+{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1579829563604, "ending_time": 1579830028717, "color":c1(0)}, {"starting_time": 1579830028717, "ending_time": 1579844691853, "color":c0(0), "label": "4h 12m 10s \/ 72.7 MB \/ CACHED"}, {"starting_time": 1579844691853, "ending_time": 1579844693551, "color":c1(0)}]},
+{"label": "run_refine (refining : pacbio_exp1.ccs)", "times": [{"starting_time": 1579844695026, "ending_time": 1579844708457, "color":c1(1)}, {"starting_time": 1579844708457, "ending_time": 1579845256114, "color":c0(1), "label": "9m 24s \/ 45 MB \/ CACHED"}, {"starting_time": 1579845256114, "ending_time": 1579845258619, "color":c1(1)}]},
+{"label": "align_reads (mapping : pacbio_exp1.ccs)", "times": [{"starting_time": 1579845259424, "ending_time": 1579845268618, "color":c1(2)}, {"starting_time": 1579845268618, "ending_time": 1579847089752, "color":c0(2), "label": "30m 31s \/ 22.4 GB \/ CACHED"}, {"starting_time": 1579847089752, "ending_time": 1579847090366, "color":c1(2)}]},
+{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1579847090628, "ending_time": 1579847105351, "color":c1(3)}, {"starting_time": 1579847105351, "ending_time": 1579849339327, "color":c0(3), "label": "37m 32s \/ 12.9 GB \/ CACHED"}, {"starting_time": 1579849339327, "ending_time": 1579849343027, "color":c1(3)}]},
+{"label": "correct_annotate (1)", "times": [{"starting_time": 1579849344769, "ending_time": 1579849393027, "color":c1(4)}, {"starting_time": 1579849393027, "ending_time": 1579850615845, "color":c0(4), "label": "21m 10s \/ 22.9 GB \/ CACHED"}]},
+{"label": "filter (1)", "times": [{"starting_time": 1579850614963, "ending_time": 1579850797276, "color":c1(5)}, {"starting_time": 1579850797276, "ending_time": 1579852658665, "color":c0(5), "label": "34m 6s \/ 961.6 MB \/ CACHED"}, {"starting_time": 1579852658665, "ending_time": 1579852660737, "color":c1(5)}]},
+{"label": "get_software_versions", "times": [{"starting_time": 1579907230558, "ending_time": 1579907378930, "color":c1(6)}, {"starting_time": 1579907378930, "ending_time": 1579907382642, "color":c2(6), "label": "2m 33s \/ 66.3 MB"}, {"starting_time": 1579907382642, "ending_time": 1579907383931, "color":c1(6)}]},
+{"label": "collate_results (1)", "times": [{"starting_time": 1579907231989, "ending_time": 1579907378935, "color":c1(7)}, {"starting_time": 1579907378935, "ending_time": 1579907673982, "color":c2(7), "label": "7m 22s \/ -"}]}
 ]
 
 

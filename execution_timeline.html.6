@@ -78,12 +78,13 @@ function c0(index) { return "#9c9c9c"; }
 function c1(index) { return "#bdbdbd"; }
 function c2(index) { return colors[index % 16]; } // <-- note: uses only the first 16 colors
 
-var elapsed="9.3s"
-var beginningMillis=1575929239407;
-var endingMillis=1575929248746;
+var elapsed="8m 26s"
+var beginningMillis=1579828446365;
+var endingMillis=1579828951873;
 var data=[
-{"label": "get_software_versions", "times": []},
-{"label": "demux (primer removal: ccs_10ksample)", "times": []}
+{"label": "demux (primer removal: ccs_10ksample)", "times": [{"starting_time": 1579828447371, "ending_time": 1579828641980, "color":c1(0)}, {"starting_time": 1579828641980, "ending_time": 1579828726393, "color":c2(0), "label": "4m 40s \/ 20.1 MB"}, {"starting_time": 1579828726393, "ending_time": 1579828726989, "color":c1(0)}]},
+{"label": "get_software_versions", "times": [{"starting_time": 1579828447478, "ending_time": 1579828641986, "color":c1(1)}, {"starting_time": 1579828641986, "ending_time": 1579828653011, "color":c2(1), "label": "3m 25s \/ 72.8 MB"}]},
+{"label": "run_refine (refining : ccs_10ksample)", "times": []}
 ]
 
 

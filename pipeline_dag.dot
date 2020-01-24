@@ -20,12 +20,12 @@ p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p4 -> p5;
 
 p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
-p13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
-p5 -> p13 [label="primers_remove"];
-
-p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p15 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
 p5 -> p15 [label="primers_refine"];
+
+p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p5 -> p13 [label="primers_remove"];
 
 p6 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
 p7 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
@@ -36,12 +36,12 @@ p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p7 -> p8;
 
 p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
-p19 [label="correct_annotate"];
-p8 -> p19 [label="ref_fasta_annotate"];
-
-p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p17 [label="align_reads"];
 p8 -> p17 [label="ref_fasta_align"];
+
+p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p19 [label="correct_annotate"];
+p8 -> p19 [label="ref_fasta_annotate"];
 
 p9 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
 p10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
@@ -62,6 +62,10 @@ p13 -> p14;
 p14 [label="demux"];
 p16 [label="run_refine"];
 p14 -> p16 [label="trimmed_out"];
+
+p14 [label="demux"];
+p21 [label="collate_results"];
+p14 -> p21 [label="lima_for_collate"];
 
 p15 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
 p16 [label="run_refine"];
@@ -87,6 +91,10 @@ p18 [label="collapse_isoforms"];
 p20 [label="filter"];
 p18 -> p20 [label="gff_for_filter"];
 
+p18 [label="collapse_isoforms"];
+p21 [label="collate_results"];
+p18 -> p21 [label="collapse_for_collate"];
+
 p19 [label="correct_annotate"];
 p20 [label="filter"];
 p19 -> p20 [label="classification_for_filter"];
@@ -102,5 +110,9 @@ p19 -> p20 [label="sam_for_filter"];
 p19 [label="correct_annotate"];
 p20 [label="filter"];
 p19 -> p20 [label="junctions_for_filter"];
+
+p20 [label="filter"];
+p21 [label="collate_results"];
+p20 -> p21 [label="filter_for_collate"];
 
 }

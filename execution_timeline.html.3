@@ -78,12 +78,14 @@ function c0(index) { return "#9c9c9c"; }
 function c1(index) { return "#bdbdbd"; }
 function c2(index) { return colors[index % 16]; } // <-- note: uses only the first 16 colors
 
-var elapsed="4h 2m 39s"
-var beginningMillis=1576006930167;
-var endingMillis=1576021489231;
+var elapsed="1m 3s"
+var beginningMillis=1579828447371;
+var endingMillis=1579906223541;
 var data=[
-{"label": "get_software_versions", "times": [{"starting_time": 1576006933242, "ending_time": 1576007370941, "color":c1(0)}, {"starting_time": 1576007370941, "ending_time": 1576007390682, "color":c2(0), "label": "7m 38s \/ 68.1 MB"}, {"starting_time": 1576007390682, "ending_time": 1576007390937, "color":c1(0)}]},
-{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1576006933389, "ending_time": 1576020426483, "color":c1(1)}]}
+{"label": "demux (primer removal: ccs_10ksample)", "times": [{"starting_time": 1579828447371, "ending_time": 1579828641980, "color":c1(0)}, {"starting_time": 1579828641980, "ending_time": 1579828726393, "color":c0(0), "label": "4m 40s \/ 20.1 MB \/ CACHED"}, {"starting_time": 1579828726393, "ending_time": 1579828726989, "color":c1(0)}]},
+{"label": "get_software_versions", "times": [{"starting_time": 1579906162239, "ending_time": 1579906170645, "color":c1(1)}, {"starting_time": 1579906170645, "ending_time": 1579906175184, "color":c2(1), "label": "18.4s \/ 70.2 MB"}, {"starting_time": 1579906175184, "ending_time": 1579906180644, "color":c1(1)}]},
+{"label": "run_refine (refining : ccs_10ksample)", "times": [{"starting_time": 1579906162329, "ending_time": 1579906170652, "color":c1(2)}, {"starting_time": 1579906170652, "ending_time": 1579906173485, "color":c2(2), "label": "13.3s \/ 33.2 MB"}, {"starting_time": 1579906173485, "ending_time": 1579906175667, "color":c1(2)}]},
+{"label": "align_reads (mapping : ccs_10ksample)", "times": [{"starting_time": 1579906176609, "ending_time": 1579906185642, "color":c1(3)}]}
 ]
 
 

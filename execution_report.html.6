@@ -18,11 +18,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Nextflow workflow report for run id [voluminous_swanson]">
+  <meta name="description" content="Nextflow workflow report for run id [berserk_bassi]">
   <meta name="author" content="Paolo Di Tommaso, Phil Ewels">
   <link rel="icon" type="image/png" href="https://www.nextflow.io/img/favicon.png" />
 
-  <title>[voluminous_swanson] Nextflow Workflow Report</title>
+  <title>[berserk_bassi] Nextflow Workflow Report</title>
 
   <style type="text/css">
   /*!
@@ -137,7 +137,7 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
         <li class="nav-item"><a class="nav-link" href="#tasks">Tasks</a></li>
       </ul>
       <span class="navbar-text">
-        [voluminous_swanson]
+        [berserk_bassi]
       </span>
     </div>
   </nav>
@@ -146,7 +146,7 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
     <div class="container">
 
       <h1 class="display-3">Nextflow workflow report</h1>
-      <h2 class="text-muted mb-4"><samp>[voluminous_swanson]</samp> </h2>
+      <h2 class="text-muted mb-4"><samp>[berserk_bassi]</samp> </h2>
 
       
           <div class="alert alert-danger mb-4">
@@ -160,26 +160,26 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
       <dl>
         <dt>Run times</dt>
         <dd>
-          <span id="workflow_start">09-Dec-2019 14:07:18</span> - <span id="workflow_complete">09-Dec-2019 14:07:27</span>
-          (<span id="completed_fromnow"></span>duration: <strong>9.3s</strong>)
+          <span id="workflow_start">23-Jan-2020 17:14:06</span> - <span id="workflow_complete">23-Jan-2020 17:22:31</span>
+          (<span id="completed_fromnow"></span>duration: <strong>8m 25s</strong>)
         </dd>
 
         <dl>
           <div class="progress" style="height: 1.6rem; margin: 1.2rem auto; border-radius: 0.20rem;">
-            <div style="width: 0.0%" class="progress-bar bg-success" data-toggle="tooltip" data-placement="top" title="0 tasks succeeded"><span class="text-truncate">&nbsp; 0 succeeded &nbsp;</span></div>
+            <div style="width: 66.67%" class="progress-bar bg-success" data-toggle="tooltip" data-placement="top" title="2 tasks succeeded"><span class="text-truncate">&nbsp; 2 succeeded &nbsp;</span></div>
             <div style="width: 0.0%" class="progress-bar bg-secondary" data-toggle="tooltip" data-placement="top" title="0 tasks were cached"><span class="text-truncate">&nbsp; 0 cached &nbsp;</span></div>
             <div style="width: 0.0%" class="progress-bar bg-warning" data-toggle="tooltip" data-placement="top" title="0 tasks reported and error and were ignored"><span class="text-truncate">&nbsp; 0 ignored &nbsp;</span></div>
-            <div style="width: 100.0%" class="progress-bar bg-danger" data-toggle="tooltip" data-placement="top" title="2 tasks failed"><span class="text-truncate">&nbsp; 2 failed &nbsp;</span></div>
+            <div style="width: 33.33%" class="progress-bar bg-danger" data-toggle="tooltip" data-placement="top" title="1 tasks failed"><span class="text-truncate">&nbsp; 1 failed &nbsp;</span></div>
           </div>
         </dl>
 
         <dt>Nextflow command</dt>
-        <dd><pre class="nfcommand"><code>nextflow run ./ --input test/ccs_10ksample.bam -profile sherlock --max_cpus 4 --max_memory 20</code></pre></dd>
+        <dd><pre class="nfcommand"><code>nextflow run ./ --input test/ccs_10ksample.bam -profile sherlock_test</code></pre></dd>
       </dl>
 
       <dl class="row small">
         <dt class="col-sm-3">CPU-Hours</dt>
-        <dd class="col-sm-9"><samp>(a few seconds)</samp></dd>
+        <dd class="col-sm-9"><samp>0.1</samp></dd>
 
         <dt class="col-sm-3">Launch directory</dt>
         <dd class="col-sm-9"><samp>/oak/stanford/groups/quake/gmstanle/nf-core-scisoseq</samp></dd>
@@ -197,16 +197,16 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
 
         
           <dt class="col-sm-3">Script ID</dt>
-          <dd class="col-sm-9"><code>f4227ab1a088428673f5f2961f2a9ccd</code></dd>
+          <dd class="col-sm-9"><code>1ea0b351adcda55310243c9fa971a3bd</code></dd>
         
 
         <dt class="col-sm-3">Workflow session</dt>
-        <dd class="col-sm-9"><code>2100329d-a2b4-4730-9b5c-91231dc183d7</code></dd>
+        <dd class="col-sm-9"><code>41aabe70-4a18-48bc-af1d-0cd97a34c6ea</code></dd>
 
         
 
         <dt class="col-sm-3">Workflow profile</dt>
-        <dd class="col-sm-9">sherlock</dd>
+        <dd class="col-sm-9">sherlock_test</dd>
 
         
         <dt class="col-sm-3">Workflow container</dt>
@@ -1029,7 +1029,7 @@ $(function() {
 
   // Nextflow report data
   window.data = { "trace":[
-{"task_id":"1","hash":"60\/121459","native_id":"56180582","process":"get_software_versions","module":"-","container":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/singularity\/gmstanle-scisoseq.img","tag":"-","name":"get_software_versions","status":"ABORTED","exit":"-","submit":"1575929240455","start":"0","complete":"-","duration":"-","realtime":"-","%cpu":"-","%mem":"-","rss":"-","vmem":"-","peak_rss":"-","peak_vmem":"-","rchar":"-","wchar":"-","syscr":"-","syscw":"-","read_bytes":"-","write_bytes":"-","attempt":"1","workdir":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/60\/1214592dbf9718b556898a86fbb16d","script":"\n    echo 1.0dev > v_pipeline.txt\n    echo 19.10.0 > v_nextflow.txt\n    multiqc --version > v_multiqc.txt\n    lima --version > v_lima.txt\n    isoseq3 --version > v_isoseq3.txt\n    minimap2 --version > v_minimap2.txt\n    bamtools --version > v_bamtools.txt\n\n    scrape_software_versions.py &> software_versions_mqc.yaml\n    ","scratch":"-","queue":"quake,owners,normal","cpus":"1","memory":"20","disk":"-","time":"14400000","env":"PATH=\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/bin:$PATH\n","error_action":"-","vol_ctxt":"-","inv_ctxt":"-"},{"task_id":"2","hash":"06\/ce9bd8","native_id":"56180583","process":"demux","module":"-","container":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/singularity\/gmstanle-scisoseq.img","tag":"primer removal: ccs_10ksample","name":"demux (primer removal: ccs_10ksample)","status":"ABORTED","exit":"-","submit":"1575929240530","start":"0","complete":"-","duration":"-","realtime":"-","%cpu":"-","%mem":"-","rss":"-","vmem":"-","peak_rss":"-","peak_vmem":"-","rchar":"-","wchar":"-","syscr":"-","syscw":"-","read_bytes":"-","write_bytes":"-","attempt":"1","workdir":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/06\/ce9bd800bdd44e0c27614790a80529","script":"\n    lima --ccs ccs_10ksample.bam barcodes.fasta ccs_10ksample.trimmed.bam\n    ","scratch":"-","queue":"quake,owners,normal","cpus":"4","memory":"20","disk":"-","time":"43200000","env":"PATH=\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/bin:$PATH\n","error_action":"-","vol_ctxt":"-","inv_ctxt":"-"}], "summary":[{"cpuUsage":null,"process":"get_software_versions","mem":null,"memUsage":null,"timeUsage":null,"vmem":null,"reads":null,"cpu":null,"time":null,"writes":null},{"cpuUsage":null,"process":"demux","mem":null,"memUsage":null,"timeUsage":null,"vmem":null,"reads":null,"cpu":null,"time":null,"writes":null}] };
+{"task_id":"2","hash":"78\/d165e9","native_id":"59197207","process":"demux","module":"-","container":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/singularity\/gmstanle-scisoseq.img","tag":"primer removal: ccs_10ksample","name":"demux (primer removal: ccs_10ksample)","status":"COMPLETED","exit":"0","submit":"1579828447371","start":"1579828641980","complete":"1579828726989","duration":"279618","realtime":"84413","%cpu":"397.4","%mem":"0.0","rss":"20074496","vmem":"1824653312","peak_rss":"21106688","peak_vmem":"1891762176","rchar":"18030083","wchar":"10928465","syscr":"728","syscw":"10328","read_bytes":"10980352","write_bytes":"10985472","attempt":"1","workdir":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/78\/d165e9b91a74d3e8bc98cdf50236e7","script":"\n    lima --ccs ccs_10ksample.bam barcodes.fasta ccs_10ksample.trimmed.bam\n    ","scratch":"-","queue":"quake,owners,normal","cpus":"4","memory":"21474836480","disk":"-","time":"3600000","env":"PATH=\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/bin:$PATH\n","error_action":"-","vol_ctxt":"1376","inv_ctxt":"7"},{"task_id":"1","hash":"eb\/41b45f","native_id":"59197208","process":"get_software_versions","module":"-","container":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/singularity\/gmstanle-scisoseq.img","tag":"-","name":"get_software_versions","status":"COMPLETED","exit":"0","submit":"1579828447478","start":"1579828641986","complete":"1579828652107","duration":"204629","realtime":"11025","%cpu":"18.8","%mem":"0.0","rss":"76369920","vmem":"147480576","peak_rss":"76369920","peak_vmem":"147480576","rchar":"12727942","wchar":"4770","syscr":"3824","syscw":"33","read_bytes":"24340480","write_bytes":"36864","attempt":"1","workdir":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/eb\/41b45fa6d076d61a4ae88cae90a041","script":"\n    echo 1.0dev > v_pipeline.txt\n    echo 19.10.0 > v_nextflow.txt\n    multiqc --version > v_multiqc.txt\n    lima --version > v_lima.txt\n    isoseq3 --version > v_isoseq3.txt\n    minimap2 --version > v_minimap2.txt\n    bamtools --version > v_bamtools.txt\n\n    scrape_software_versions.py &> software_versions_mqc.yaml\n    ","scratch":"-","queue":"quake,owners,normal","cpus":"1","memory":"4294967296","disk":"-","time":"3600000","env":"PATH=\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/bin:$PATH\n","error_action":"-","vol_ctxt":"5813","inv_ctxt":"29"},{"task_id":"3","hash":"a1\/179c6f","native_id":"59197328","process":"run_refine","module":"-","container":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/singularity\/gmstanle-scisoseq.img","tag":"refining : ccs_10ksample","name":"run_refine (refining : ccs_10ksample)","status":"ABORTED","exit":"-","submit":"1579828731000","start":"0","complete":"-","duration":"-","realtime":"-","%cpu":"-","%mem":"-","rss":"-","vmem":"-","peak_rss":"-","peak_vmem":"-","rchar":"-","wchar":"-","syscr":"-","syscw":"-","read_bytes":"-","write_bytes":"-","attempt":"1","workdir":"\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/work\/a1\/179c6f209b1e1020e07d7bd608c230","script":"\n    isoseq3 refine ccs_10ksample.trimmed.bam barcodes.fasta flnc.bam --require-polya\n    bamtools convert -format fasta -in flnc.bam > ccs_10ksample.flnc.fasta\n    ","scratch":"-","queue":"quake,owners,normal","cpus":"4","memory":"21474836480","disk":"-","time":"3600000","env":"PATH=\/oak\/stanford\/groups\/quake\/gmstanle\/nf-core-scisoseq\/bin:$PATH\n","error_action":"-","vol_ctxt":"-","inv_ctxt":"-"}], "summary":[{"cpuUsage":{"mean":18.8,"min":18.8,"q1":18.8,"q2":18.8,"q3":18.8,"max":18.8,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"process":"get_software_versions","mem":{"mean":76369920,"min":76369920,"q1":76369920,"q2":76369920,"q3":76369920,"max":76369920,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"memUsage":{"mean":1.78,"min":1.78,"q1":1.78,"q2":1.78,"q3":1.78,"max":1.78,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"timeUsage":{"mean":0.31,"min":0.31,"q1":0.31,"q2":0.31,"q3":0.31,"max":0.31,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"vmem":{"mean":147480576,"min":147480576,"q1":147480576,"q2":147480576,"q3":147480576,"max":147480576,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"reads":{"mean":12727942,"min":12727942,"q1":12727942,"q2":12727942,"q3":12727942,"max":12727942,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"cpu":{"mean":18.8,"min":18.8,"q1":18.8,"q2":18.8,"q3":18.8,"max":18.8,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"time":{"mean":11025,"min":11025,"q1":11025,"q2":11025,"q3":11025,"max":11025,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"},"writes":{"mean":4770,"min":4770,"q1":4770,"q2":4770,"q3":4770,"max":4770,"minLabel":"get_software_versions","maxLabel":"get_software_versions","q1Label":"get_software_versions","q2Label":"get_software_versions","q3Label":"get_software_versions"}},{"cpuUsage":{"mean":99.35,"min":99.35,"q1":99.35,"q2":99.35,"q3":99.35,"max":99.35,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"process":"demux","mem":{"mean":21106688,"min":21106688,"q1":21106688,"q2":21106688,"q3":21106688,"max":21106688,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"memUsage":{"mean":0.1,"min":0.1,"q1":0.1,"q2":0.1,"q3":0.1,"max":0.1,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"timeUsage":{"mean":2.34,"min":2.34,"q1":2.34,"q2":2.34,"q3":2.34,"max":2.34,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"vmem":{"mean":1891762176,"min":1891762176,"q1":1891762176,"q2":1891762176,"q3":1891762176,"max":1891762176,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"reads":{"mean":18030083,"min":18030083,"q1":18030083,"q2":18030083,"q3":18030083,"max":18030083,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"cpu":{"mean":397.4,"min":397.4,"q1":397.4,"q2":397.4,"q3":397.4,"max":397.4,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"time":{"mean":84413,"min":84413,"q1":84413,"q2":84413,"q3":84413,"max":84413,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"},"writes":{"mean":10928465,"min":10928465,"q1":10928465,"q2":10928465,"q3":10928465,"max":10928465,"minLabel":"demux (primer removal: ccs_10ksample)","maxLabel":"demux (primer removal: ccs_10ksample)","q1Label":"demux (primer removal: ccs_10ksample)","q2Label":"demux (primer removal: ccs_10ksample)","q3Label":"demux (primer removal: ccs_10ksample)"}},{"cpuUsage":null,"process":"run_refine","mem":null,"memUsage":null,"timeUsage":null,"vmem":null,"reads":null,"cpu":null,"time":null,"writes":null}] };
 
   </script>
 
