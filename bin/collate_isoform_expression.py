@@ -1,10 +1,12 @@
 """
 Given:
 
-   1. single cell UMI, BC file (ccs -> umi, bc)
+   1. single cell BC file (ccs -> bc)
    2. collapse group.txt  (ccs -> pbid)
    3. SQANTI classification (pbid -> transcript, isoform, category)
    4. optional ontarget file (pbid -> ontarget or not)
+
+   This code is for dual BCs, one on either end of the transcript (BC_1, BC_2)
 
 Output a collated infor file that is:
 

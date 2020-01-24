@@ -302,6 +302,7 @@ process demux{
     //set val(name), file("${name}.fl.primer_5p--primer_3p.bam") into primers_removed_out
     // TODO: get file output name
     set val(name), file("${name}.trimmed.bam") into trimmed_out 
+    path "${name}.trimmed.lima.report" into lima_for_collate
  
 //    """
 //    lima $bam $primers ${name}.fl.bam --isoseq --no-pbi
@@ -415,6 +416,7 @@ process collapse_isoforms{
         path "*{gff,fq,txt}"
         set name, file("${name}.collapsed.rep.fa") into collapse_for_annotate
         path "${name}.collapsed.gff" into gff_for_filter
+        set name, file("${name}.collapsed.group.txt") into collapse_for_collate
          //, collapse_for_filter
 //        set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
         //path "${name}.collapsed.group.txt" into collapse_txt_for_filter
@@ -483,12 +485,35 @@ process filter{
 
     output:
         path "*"
+        path "${name}.rep_classification.filtered_lite_classification.txt" into filter_for_collate
 
     """
     python $baseDir/bin/sqanti_filter2.py \
      ${name}.collapsed.rep_classification.txt \
      $fasta $sam $gff
     """
+}
+
+process collate_results{
+
+    publishDir "$params.outdir/$name/collate_results", mode: 'copy'
+    label 'process_low' 
+
+    input:
+
+        set name, file(group_file) from collapse_for_collate
+        path bc_file from lima_for_collate
+        path classification_file from filter_for_collate
+
+    output:
+
+        path "*"
+   
+   """
+    python $baseDir/bin/collate_isoform_expression.py \
+     $group_file  $bc_file $classification_file ${name}.trimmed.annotated.csv
+     
+   """
 }
 
 
