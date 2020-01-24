@@ -56,6 +56,9 @@ def collate_gene_info(group_filename, bc_filename, class_filename, output_filena
         if pbid not in sqanti_info:
             print >> sys.stderr, "ignoring ID {0} cuz not in classification file.".format(pbid)
             continue
+        if ccs_id not in bc_info:
+            print >> sys.stderr, "ignoring ZMW {0} since it is not in the lima bc dedup file".format(ccs_id)
+            continue    
         if no_extra_base and  bc_info[ccs_id]['extra']!='NA':
             print >> sys.stderr, "ignoring ID {0} cuz extra bases.".format(pbid)
             continue
