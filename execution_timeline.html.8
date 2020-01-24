@@ -78,16 +78,17 @@ function c0(index) { return "#9c9c9c"; }
 function c1(index) { return "#bdbdbd"; }
 function c2(index) { return colors[index % 16]; } // <-- note: uses only the first 16 colors
 
-var elapsed="14m 28s"
+var elapsed="19h 19m"
 var beginningMillis=1576021798644;
-var endingMillis=1576279391010;
+var endingMillis=1576348969783;
 var data=[
-{"label": "get_software_versions", "times": [{"starting_time": 1576278524103, "ending_time": 1576278959712, "color":c1(0)}, {"starting_time": 1576278959712, "ending_time": 1576278989352, "color":c2(0), "label": "7m 46s \/ 71 MB"}, {"starting_time": 1576278989352, "ending_time": 1576278989714, "color":c1(0)}]},
-{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1576021798644, "ending_time": 1576023645368, "color":c1(1)}, {"starting_time": 1576023645368, "ending_time": 1576041259325, "color":c0(1), "label": "5h 24m 21s \/ 63.9 MB \/ CACHED"}, {"starting_time": 1576041259325, "ending_time": 1576041259767, "color":c1(1)}]},
-{"label": "run_refine (refining : pacbio_exp1.ccs)", "times": [{"starting_time": 1576041260133, "ending_time": 1576103984399, "color":c1(2)}, {"starting_time": 1576103984399, "ending_time": 1576104507439, "color":c0(2), "label": "17h 34m 13s \/ 48.3 MB \/ CACHED"}, {"starting_time": 1576104507439, "ending_time": 1576104513380, "color":c1(2)}]},
-{"label": "align_reads (mapping : pacbio_exp1.ccs)", "times": [{"starting_time": 1576104513616, "ending_time": 1576149215605, "color":c1(3)}, {"starting_time": 1576149215605, "ending_time": 1576150864504, "color":c0(3), "label": "12h 52m 30s \/ 22.5 GB \/ CACHED"}]},
-{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1576150863964, "ending_time": 1576173322516, "color":c1(4)}, {"starting_time": 1576173322516, "ending_time": 1576175559815, "color":c0(4), "label": "6h 51m 44s \/ 12.9 GB \/ CACHED"}, {"starting_time": 1576175559815, "ending_time": 1576175568036, "color":c1(4)}]},
-{"label": "correct_annotate (1)", "times": [{"starting_time": 1576278525362, "ending_time": 1576278964270, "color":c1(5)}]}
+{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1576021798644, "ending_time": 1576023645368, "color":c1(0)}, {"starting_time": 1576023645368, "ending_time": 1576041259325, "color":c0(0), "label": "5h 24m 21s \/ 63.9 MB \/ CACHED"}, {"starting_time": 1576041259325, "ending_time": 1576041259767, "color":c1(0)}]},
+{"label": "run_refine (refining : pacbio_exp1.ccs)", "times": [{"starting_time": 1576041260133, "ending_time": 1576103984399, "color":c1(1)}, {"starting_time": 1576103984399, "ending_time": 1576104507439, "color":c0(1), "label": "17h 34m 13s \/ 48.3 MB \/ CACHED"}, {"starting_time": 1576104507439, "ending_time": 1576104513380, "color":c1(1)}]},
+{"label": "align_reads (mapping : pacbio_exp1.ccs)", "times": [{"starting_time": 1576104513616, "ending_time": 1576149215605, "color":c1(2)}, {"starting_time": 1576149215605, "ending_time": 1576150864504, "color":c0(2), "label": "12h 52m 30s \/ 22.5 GB \/ CACHED"}]},
+{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1576150863964, "ending_time": 1576173322516, "color":c1(3)}, {"starting_time": 1576173322516, "ending_time": 1576175559815, "color":c0(3), "label": "6h 51m 44s \/ 12.9 GB \/ CACHED"}, {"starting_time": 1576175559815, "ending_time": 1576175568036, "color":c1(3)}]},
+{"label": "get_software_versions", "times": [{"starting_time": 1576279433609, "ending_time": 1576279970891, "color":c1(4)}, {"starting_time": 1576279970891, "ending_time": 1576279989937, "color":c2(4), "label": "9m 17s \/ 67.7 MB"}, {"starting_time": 1576279989937, "ending_time": 1576279990887, "color":c1(4)}]},
+{"label": "correct_annotate (1)", "times": [{"starting_time": 1576279433747, "ending_time": 1576345612089, "color":c1(5)}, {"starting_time": 1576345612089, "ending_time": 1576346878150, "color":c2(5), "label": "18h 44m 3s \/ 23 GB"}]},
+{"label": "filter (1)", "times": [{"starting_time": 1576346878754, "ending_time": 1576347247144, "color":c1(6)}, {"starting_time": 1576347247144, "ending_time": 1576348966751, "color":c2(6), "label": "34m 49s \/ 1.2 GB"}, {"starting_time": 1576348966751, "ending_time": 1576348967359, "color":c1(6)}]}
 ]
 
 

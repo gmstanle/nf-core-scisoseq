@@ -20,12 +20,12 @@ p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p4 -> p5;
 
 p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
-p15 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
-p5 -> p15 [label="primers_refine"];
-
-p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
 p5 -> p13 [label="primers_remove"];
+
+p5 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p15 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+p5 -> p15 [label="primers_refine"];
 
 p6 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
 p7 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
@@ -36,12 +36,12 @@ p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p7 -> p8;
 
 p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
-p17 [label="align_reads"];
-p8 -> p17 [label="ref_fasta_align"];
-
-p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
 p19 [label="correct_annotate"];
 p8 -> p19 [label="ref_fasta_annotate"];
+
+p8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="into"];
+p17 [label="align_reads"];
+p8 -> p17 [label="ref_fasta_align"];
 
 p9 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
 p10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];

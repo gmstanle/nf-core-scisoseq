@@ -78,18 +78,18 @@ function c0(index) { return "#9c9c9c"; }
 function c1(index) { return "#bdbdbd"; }
 function c2(index) { return colors[index % 16]; } // <-- note: uses only the first 16 colors
 
-var elapsed="10h 34m 15s"
-var beginningMillis=1579829542854;
-var endingMillis=1579867597904;
+var elapsed="1h 28m 58s"
+var beginningMillis=1579829563604;
+var endingMillis=1579906139450;
 var data=[
-{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1579829563604, "ending_time": 1579830028717, "color":c1(0)}, {"starting_time": 1579830028717, "ending_time": 1579844691853, "color":c2(0), "label": "4h 12m 10s \/ 72.7 MB"}, {"starting_time": 1579844691853, "ending_time": 1579844693551, "color":c1(0)}]},
-{"label": "get_software_versions", "times": [{"starting_time": 1579829564816, "ending_time": 1579829803489, "color":c1(1)}, {"starting_time": 1579829803489, "ending_time": 1579829807198, "color":c2(1), "label": "4m 4s \/ 68.1 MB"}, {"starting_time": 1579829807198, "ending_time": 1579829808489, "color":c1(1)}]},
-{"label": "run_refine (refining : pacbio_exp1.ccs)", "times": [{"starting_time": 1579844695026, "ending_time": 1579844708457, "color":c1(2)}, {"starting_time": 1579844708457, "ending_time": 1579845256114, "color":c2(2), "label": "9m 24s \/ 45 MB"}, {"starting_time": 1579845256114, "ending_time": 1579845258619, "color":c1(2)}]},
-{"label": "align_reads (mapping : pacbio_exp1.ccs)", "times": [{"starting_time": 1579845259424, "ending_time": 1579845268618, "color":c1(3)}, {"starting_time": 1579845268618, "ending_time": 1579847089752, "color":c2(3), "label": "30m 31s \/ 22.4 GB"}, {"starting_time": 1579847089752, "ending_time": 1579847090366, "color":c1(3)}]},
-{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1579847090628, "ending_time": 1579847105351, "color":c1(4)}, {"starting_time": 1579847105351, "ending_time": 1579849339327, "color":c2(4), "label": "37m 32s \/ 12.9 GB"}, {"starting_time": 1579849339327, "ending_time": 1579849343027, "color":c1(4)}]},
-{"label": "correct_annotate (1)", "times": [{"starting_time": 1579849344769, "ending_time": 1579849393027, "color":c1(5)}, {"starting_time": 1579849393027, "ending_time": 1579850615845, "color":c2(5), "label": "21m 10s \/ 22.9 GB"}]},
-{"label": "filter (1)", "times": [{"starting_time": 1579850614963, "ending_time": 1579850797276, "color":c1(6)}, {"starting_time": 1579850797276, "ending_time": 1579852658665, "color":c2(6), "label": "34m 6s \/ 961.6 MB"}, {"starting_time": 1579852658665, "ending_time": 1579852660737, "color":c1(6)}]},
-{"label": "collate_results (1)", "times": [{"starting_time": 1579852668139, "ending_time": 1579852846550, "color":c1(7)}, {"starting_time": 1579852846550, "ending_time": 1579867596867, "color":c2(7), "label": "4h 8m 49s \/ -"}]}
+{"label": "demux (primer removal: pacbio_exp1.ccs)", "times": [{"starting_time": 1579829563604, "ending_time": 1579830028717, "color":c1(0)}, {"starting_time": 1579830028717, "ending_time": 1579844691853, "color":c0(0), "label": "4h 12m 10s \/ 72.7 MB \/ CACHED"}, {"starting_time": 1579844691853, "ending_time": 1579844693551, "color":c1(0)}]},
+{"label": "run_refine (refining : pacbio_exp1.ccs)", "times": [{"starting_time": 1579844695026, "ending_time": 1579844708457, "color":c1(1)}, {"starting_time": 1579844708457, "ending_time": 1579845256114, "color":c0(1), "label": "9m 24s \/ 45 MB \/ CACHED"}, {"starting_time": 1579845256114, "ending_time": 1579845258619, "color":c1(1)}]},
+{"label": "get_software_versions", "times": [{"starting_time": 1579900802248, "ending_time": 1579900811804, "color":c1(2)}, {"starting_time": 1579900811804, "ending_time": 1579900816231, "color":c2(2), "label": "19.6s \/ 72.9 MB"}, {"starting_time": 1579900816231, "ending_time": 1579900821807, "color":c1(2)}]},
+{"label": "align_reads (mapping : pacbio_exp1.ccs)", "times": [{"starting_time": 1579845259424, "ending_time": 1579845268618, "color":c1(3)}, {"starting_time": 1579845268618, "ending_time": 1579847089752, "color":c0(3), "label": "30m 31s \/ 22.4 GB \/ CACHED"}, {"starting_time": 1579847089752, "ending_time": 1579847090366, "color":c1(3)}]},
+{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1579847090628, "ending_time": 1579847105351, "color":c1(4)}, {"starting_time": 1579847105351, "ending_time": 1579849339327, "color":c0(4), "label": "37m 32s \/ 12.9 GB \/ CACHED"}, {"starting_time": 1579849339327, "ending_time": 1579849343027, "color":c1(4)}]},
+{"label": "correct_annotate (1)", "times": [{"starting_time": 1579849344769, "ending_time": 1579849393027, "color":c1(5)}, {"starting_time": 1579849393027, "ending_time": 1579850615845, "color":c0(5), "label": "21m 10s \/ 22.9 GB \/ CACHED"}]},
+{"label": "filter (1)", "times": [{"starting_time": 1579850614963, "ending_time": 1579850797276, "color":c1(6)}, {"starting_time": 1579850797276, "ending_time": 1579852658665, "color":c0(6), "label": "34m 6s \/ 961.6 MB \/ CACHED"}, {"starting_time": 1579852658665, "ending_time": 1579852660737, "color":c1(6)}]},
+{"label": "collate_results (1)", "times": [{"starting_time": 1579900802487, "ending_time": 1579900816804, "color":c1(7)}]}
 ]
 
 

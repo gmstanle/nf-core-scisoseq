@@ -5,5 +5,5 @@ task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	p
 5	09/916ba2	59210434	collapse_isoforms (1)	CACHED	0	2020-01-23 22:24:50.628	37m 32s	37m 14s	100.7%	12.9 GB	13.5 GB	34 GB	12.3 GB
 6	35/27aef5	59212963	correct_annotate (1)	CACHED	0	2020-01-23 23:02:24.769	21m 10s	20m 23s	242.5%	22.9 GB	25.5 GB	12.9 GB	3.2 GB
 7	2d/76341c	59215576	filter (1)	CACHED	0	2020-01-23 23:23:34.963	34m 6s	31m 1s	100.5%	961.6 MB	1.7 GB	1.1 GB	652.2 MB
-1	64/ea7cfd	59265840	get_software_versions	COMPLETED	0	2020-01-24 15:07:10.558	2m 33s	3.7s	58.7%	66.3 MB	171.1 MB	12.1 MB	4.7 KB
-8	9b/eb4f64	59265841	collate_results (1)	FAILED	1	2020-01-24 15:07:11.989	7m 22s	4m 55s	-	-	-	-	-
+1	68/d5ec0a	59267522	get_software_versions	COMPLETED	0	2020-01-24 15:39:41.500	21s	3.3s	63.2%	72.8 MB	140.7 MB	12.1 MB	4.7 KB
+8	f9/cbc3a5	59267523	collate_results (1)	COMPLETED	0	2020-01-24 15:39:42.968	7m 7s	4m 45s	99.5%	36.7 GB	36.7 GB	2.2 GB	301.2 MB

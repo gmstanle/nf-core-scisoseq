@@ -78,14 +78,18 @@ function c0(index) { return "#9c9c9c"; }
 function c1(index) { return "#bdbdbd"; }
 function c2(index) { return colors[index % 16]; } // <-- note: uses only the first 16 colors
 
-var elapsed="1m 3s"
+var elapsed="5m 57s"
 var beginningMillis=1579828447371;
-var endingMillis=1579906223541;
+var endingMillis=1579906594496;
 var data=[
 {"label": "demux (primer removal: ccs_10ksample)", "times": [{"starting_time": 1579828447371, "ending_time": 1579828641980, "color":c1(0)}, {"starting_time": 1579828641980, "ending_time": 1579828726393, "color":c0(0), "label": "4m 40s \/ 20.1 MB \/ CACHED"}, {"starting_time": 1579828726393, "ending_time": 1579828726989, "color":c1(0)}]},
-{"label": "get_software_versions", "times": [{"starting_time": 1579906162239, "ending_time": 1579906170645, "color":c1(1)}, {"starting_time": 1579906170645, "ending_time": 1579906175184, "color":c2(1), "label": "18.4s \/ 70.2 MB"}, {"starting_time": 1579906175184, "ending_time": 1579906180644, "color":c1(1)}]},
-{"label": "run_refine (refining : ccs_10ksample)", "times": [{"starting_time": 1579906162329, "ending_time": 1579906170652, "color":c1(2)}, {"starting_time": 1579906170652, "ending_time": 1579906173485, "color":c2(2), "label": "13.3s \/ 33.2 MB"}, {"starting_time": 1579906173485, "ending_time": 1579906175667, "color":c1(2)}]},
-{"label": "align_reads (mapping : ccs_10ksample)", "times": [{"starting_time": 1579906176609, "ending_time": 1579906185642, "color":c1(3)}]}
+{"label": "run_refine (refining : ccs_10ksample)", "times": [{"starting_time": 1579906162329, "ending_time": 1579906170652, "color":c1(1)}, {"starting_time": 1579906170652, "ending_time": 1579906173485, "color":c0(1), "label": "13.3s \/ 33.2 MB \/ CACHED"}, {"starting_time": 1579906173485, "ending_time": 1579906175667, "color":c1(1)}]},
+{"label": "get_software_versions", "times": [{"starting_time": 1579906239711, "ending_time": 1579906257734, "color":c1(2)}, {"starting_time": 1579906257734, "ending_time": 1579906261914, "color":c2(2), "label": "23s \/ 73.5 MB"}, {"starting_time": 1579906261914, "ending_time": 1579906262757, "color":c1(2)}]},
+{"label": "align_reads (mapping : ccs_10ksample)", "times": [{"starting_time": 1579906239892, "ending_time": 1579906257740, "color":c1(3)}, {"starting_time": 1579906257740, "ending_time": 1579906367768, "color":c2(3), "label": "2m 9s \/ 17 GB"}, {"starting_time": 1579906367768, "ending_time": 1579906368576, "color":c1(3)}]},
+{"label": "collapse_isoforms (1)", "times": [{"starting_time": 1579906370069, "ending_time": 1579906383553, "color":c1(4)}, {"starting_time": 1579906383553, "ending_time": 1579906387922, "color":c2(4), "label": "19.7s \/ 47.5 MB"}, {"starting_time": 1579906387922, "ending_time": 1579906389729, "color":c1(4)}]},
+{"label": "correct_annotate (1)", "times": [{"starting_time": 1579906390279, "ending_time": 1579906393554, "color":c1(5)}, {"starting_time": 1579906393554, "ending_time": 1579906557560, "color":c2(5), "label": "2m 48s \/ 19.8 GB"}, {"starting_time": 1579906557560, "ending_time": 1579906558650, "color":c1(5)}]},
+{"label": "filter (1)", "times": [{"starting_time": 1579906559150, "ending_time": 1579906573568, "color":c1(6)}, {"starting_time": 1579906573568, "ending_time": 1579906583304, "color":c2(6), "label": "24.5s \/ 175.1 MB"}, {"starting_time": 1579906583304, "ending_time": 1579906583646, "color":c1(6)}]},
+{"label": "collate_results (1)", "times": [{"starting_time": 1579906583856, "ending_time": 1579906593569, "color":c1(7)}, {"starting_time": 1579906593569, "ending_time": 1579906594075, "color":c2(7), "label": "9.8s \/ 5.6 MB"}]}
 ]
 
 
