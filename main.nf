@@ -485,7 +485,7 @@ process filter{
 
     output:
         path "*"
-        path "${name}.rep_classification.filtered_lite_classification.txt" into filter_for_collate
+        path "${name}.collapsed.rep_classification.filtered_lite_classification.txt" into filter_for_collate
 
     """
     python $baseDir/bin/sqanti_filter2.py \
