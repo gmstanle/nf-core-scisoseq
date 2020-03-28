@@ -302,7 +302,7 @@ process demux{
     //set val(name), file("${name}.fl.primer_5p--primer_3p.bam") into primers_removed_out
     // TODO: get file output name
     set val(name), file("${name}.trimmed.bam") into trimmed_out 
-    path "${name}.trimmed.lima.report" into lima_for_collate
+    path "${name}.trimmed.lima.report" into lima_for_collate, lima_for_collate_2
  
 //    """
 //    lima $bam $primers ${name}.fl.bam --isoseq --no-pbi
@@ -416,7 +416,7 @@ process collapse_isoforms{
         path "*{gff,fq,txt}"
         set name, file("${name}.collapsed.rep.fa") into collapse_for_annotate
         path "${name}.collapsed.gff" into gff_for_filter
-        set name, file("${name}.collapsed.group.txt") into collapse_for_collate
+        set name, file("${name}.collapsed.group.txt") into collapse_for_collate, collapse_for_collate_2
          //, collapse_for_filter
 //        set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
         //path "${name}.collapsed.group.txt" into collapse_txt_for_filter
@@ -495,6 +495,10 @@ process filter{
     """
 }
 
+/*
+ *  Note: the collapse_isoform_expression.py method is pretty memory inefficient, probably because it uses Pandas dataframes.
+ *It will not scale to larger datasets than the current one (7e6 pacbio reads)
+*/
 process collate_results{
 
     publishDir "$params.outdir/$name/collate_results", mode: 'copy'
@@ -504,8 +508,9 @@ process collate_results{
     input:
 
         set name, file(group_file) from collapse_for_collate
+        set name_2, file("collate_results/group_file_2") from collapse_for_collate_2
         path bc_file from lima_for_collate
-        path bc_file from lima_for_collate
+        file("bc_file_2") from lima_for_collate_2
         path sqanti_filter_file from filter_for_collate
         path sqanti_qc_file from sqanti_qc_for_collate 
 
@@ -518,7 +523,7 @@ process collate_results{
      $group_file  $bc_file $sqanti_filter_file ${name}.trimmed.annotated.csv
 
     python $baseDir/bin/collate_isoform_expression.py \
-     $group_file  $bc_file $sqanti_qc_for_collate  ${name}.trimmed.annotated.no_sqanti_filter.csv
+     group_file_2 bc_file_2 $sqanti_qc_for_collate ${name}.trimmed.annotated.no_sqanti_filter.csv
      
    """
 }
