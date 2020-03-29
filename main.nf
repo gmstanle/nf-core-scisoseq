@@ -458,7 +458,7 @@ process correct_annotate{
         path "${name}.collapsed.rep.renamed_corrected.fasta" into fasta_for_filter
         path "${name}.collapsed.rep.renamed_corrected.sam" into sam_for_filter
         path "${name}.collapsed.rep_junctions.txt" into junctions_for_filter 
-        path "${name}.collapsed.rep_classification.txt" into sqanti_qc_for_collate 
+        path "${name}.collapsed.rep_classification.txt" into sqanti_qc_for_collate  
 
     """
     echo ${task.cpus}
@@ -502,15 +502,16 @@ process filter{
 process collate_results{
 
     publishDir "$params.outdir/$name/collate_results", mode: 'copy'
-    memory '64 GB'
+    label 'process_high' 
+//    memory '64 GB'
     cpus 2
 
     input:
 
         set name, file(group_file) from collapse_for_collate
-        set name_2, file("collate_results/group_file_2") from collapse_for_collate_2
+        set name_2, file("group_file_2") from collapse_for_collate_2
         path bc_file from lima_for_collate
-        file("bc_file_2") from lima_for_collate_2
+        file("bc_file_2.report") from lima_for_collate_2
         path sqanti_filter_file from filter_for_collate
         path sqanti_qc_file from sqanti_qc_for_collate 
 
@@ -523,7 +524,7 @@ process collate_results{
      $group_file  $bc_file $sqanti_filter_file ${name}.trimmed.annotated.csv
 
     python $baseDir/bin/collate_isoform_expression.py \
-     group_file_2 bc_file_2 $sqanti_qc_for_collate ${name}.trimmed.annotated.no_sqanti_filter.csv
+     group_file_2 bc_file_2.report $sqanti_qc_file ${name}.trimmed.annotated.no_sqanti_filter.csv
      
    """
 }
