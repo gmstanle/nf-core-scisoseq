@@ -6,7 +6,7 @@
 [![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A50.32.0-brightgreen.svg)](https://www.nextflow.io/)
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/)
-[![Docker]](https://hub.docker.com/r/gmstanle/scisoseq)
+[![Docker](https://hub.docker.com/r/gmstanle/scisoseq)]
 
 ## Introduction
 
@@ -52,7 +52,7 @@ The nf-core/scisoseq pipeline comes with documentation about the pipeline, found
 
 ## Credits
 
-nf-core/scisoseq was originally written by Geoff Stanley.
+nf-core/scisoseq was originally written by [Geoff Stanley](https://github.com/gmstanle/).
 
 ## Contributions and Support
 
@@ -67,3 +67,7 @@ For further information or help, don't hesitate to get in touch on [Slack](https
 
 You can cite the `nf-core` pre-print as follows:  
 Ewels PA, Peltzer A, Fillinger S, Alneberg JA, Patel H, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. **nf-core: Community curated bioinformatics pipelines**. *bioRxiv*. 2019. p. 610741. [doi: 10.1101/610741](https://www.biorxiv.org/content/10.1101/610741v1).
+
+The packages used herein were largely developed by Pacific Biosciences ([Isoseq](https://github.com/PacificBiosciences/IsoSeq)), [Elizabeth Tseng](https://github.com/Magdoll) (SQANTI2), and the [Conesa lab](https://github.com/ConesaLab) (SQANTI).
+
+I have packaged them into a convenient NextFlow pipeline with Docker so that they can be easily run on any cloud service, private server cluster, or local machine. 
