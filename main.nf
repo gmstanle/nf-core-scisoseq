@@ -278,7 +278,6 @@ process fastqc {
 }
  */
 
-// Geoff: TODO: edit this for the primer design I used 
 // Geoff: changed to use indexed .bam files (.pbi)
 // Geoff: renamed demux which makes for sense for multiplexed samples
 //        lima --ccs both demuxes and removes primers
@@ -292,21 +291,14 @@ process demux{
 
     input:
     // weird usage of dump - it is normally for debugging.
-//    set name, file(bam) from ccs_out.dump(tag: 'ccs_name')
-    //set name, file(bam) from ccs_out_indexed
     set name, file(bam) from ccs_out
     path primers from primers_remove.collect()
     
     output:
     path "*"
-    //set val(name), file("${name}.fl.primer_5p--primer_3p.bam") into primers_removed_out
-    // TODO: get file output name
     set val(name), file("${name}.trimmed.bam") into trimmed_out 
     path "${name}.trimmed.lima.report" into lima_for_collate, lima_for_collate_2
  
-//    """
-//    lima $bam $primers ${name}.fl.bam --isoseq --no-pbi
-//    """
     """
     lima --ccs $bam $primers ${name}.trimmed.bam
     """
@@ -323,13 +315,11 @@ process run_refine{
     path primers from primers_refine.collect()
     
 
-    // flnc = full-length non-concatemer
+    // flnc = full-length non-concatemer read
     output:
     path "*"
     set val(name), file("${name}.flnc.fasta") into refine_out, refine_for_collapse
-//    path "${name}.flnc.fasta" into refine_for_collapse
  
-    //TODO update input & output channels
     """
     isoseq3 refine $bam $primers flnc.bam --require-polya
     bamtools convert -format fasta -in flnc.bam > ${name}.flnc.fasta
@@ -338,7 +328,7 @@ process run_refine{
 }
 
 
-// I am not sure whether the cluster and polish steps are necessary. The PacBio IsoSeq3
+// I don't think the cluster and polish steps are necessary. The PacBio IsoSeq3
 // page has them included but Liz Tseng's "best practices for single-cell IsoSeq" does not.
 // As of v3.2, both clustering and polishing are performed by IsoSeq cluster
 //process cluster_reads{
@@ -372,8 +362,6 @@ process align_reads{
     publishDir "$params.outdir/$name/minimap2", mode: 'copy'
 
     input:
-   // set name, file(sample) from polish_out.dump(tag: 'align')
-    //set name, file(polished_fasta) from cluster_out
     set name, file(flnc_fasta) from refine_out 
     path ref from ref_fasta_align
 
@@ -417,9 +405,6 @@ process collapse_isoforms{
         set name, file("${name}.collapsed.rep.fa") into collapse_for_annotate
         path "${name}.collapsed.gff" into gff_for_filter
         set name, file("${name}.collapsed.group.txt") into collapse_for_collate, collapse_for_collate_2
-         //, collapse_for_filter
-//        set name, file("${name}.collapsed.rep.fq") into collapse_for_filter
-        //path "${name}.collapsed.group.txt" into collapse_txt_for_filter
 
 
     // output is out.collapsed.gff, out.collapsed.rep.fq, out.collapsed.group.txt
@@ -469,7 +454,8 @@ process correct_annotate{
 
 /*
 * This is the modified filter function, docs here https://github.com/Magdoll/SQANTI2#filtering-isoforms-using-sqanti2
-* The output is not discussed in those docs but is mentioned here https://github.com/Magdoll/cDNA_Cupcake/wiki/Iso-Seq-Single-Cell-Analysis:-Recommended-Analysis-Guidelines#8-filter-artifacts
+* The output is not discussed in those docs but is mentioned here 
+* https://github.com/Magdoll/cDNA_Cupcake/wiki/Iso-Seq-Single-Cell-Analysis:-Recommended-Analysis-Guidelines#8-filter-artifacts
 */
 process filter{
 
@@ -496,8 +482,9 @@ process filter{
 }
 
 /*
- *  Note: the collapse_isoform_expression.py method is pretty memory inefficient, probably because it uses Pandas dataframes.
- *It will not scale to larger datasets than the current one (7e6 pacbio reads)
+ * Note: the collapse_isoform_expression.py method is pretty memory inefficient, probably because it uses Pandas dataframes.
+ * It will not scale to larger datasets than the current one (7e6 pacbio reads)
+ * TODO: make this scale if necessary
 */
 process collate_results{
 
